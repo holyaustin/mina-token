@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>API - Mina Fungible Token Documentation</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Deploy and interact with custom fungible tokens on Mina.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "coal" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="api.html" class="active"><strong aria-hidden="true">2.</strong> API</a></li><li class="chapter-item expanded "><a href="deploy.html"><strong aria-hidden="true">3.</strong> Deploy</a></li><li class="chapter-item expanded "><a href="token_operations.html"><strong aria-hidden="true">4.</strong> Token Operations</a></li><li class="chapter-item expanded "><a href="use_in_zk_app.html"><strong aria-hidden="true">5.</strong> Use in ZkApp</a></li><li class="chapter-item expanded "><a href="limitations.html"><strong aria-hidden="true">6.</strong> Design Limitations</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Mina Fungible Token Documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/MinaFoundation/mina-fungible-token" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/MinaFoundation/mina-fungible-token/edit/main/documentation/api.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="api-overview"><a class="header" href="#api-overview">API overview</a></h1>
+<p>The token standard implementation provides a smart contract <code>FungibleToken</code> that can be deployed as
+the token owner for a new token. It provides all the user facing functionality that is expected of a
+fungible token: creating, transferring, and destroying tokens, as well as querying balances and the
+overall amount of tokens.</p>
+<p>Using the standard means using this particular, unmodified, contract. The reason that altering the
+contract is considered deviating from the standard is the off-chain execution model of MINA: a third
+party (wallet, exchange, etc.) that wants to integrate a token needs to have access to and execute
+the code of the token owner contract in order to interact with the token. Agreeing on one particular
+implementation reduces the burden of integration significantly.</p>
+<p>In order to allow for some customization without changing the token owner contract, we delegate some
+functionality to a secondary admin contract, called <code>FungibleTokenAdmin</code>. This contract controls
+access to privileged operations such as minting, pausing/resuming transfers, or changing the admin
+contract itself. This construction allows you to set the rules for monetary expansion, without
+changing the token owner contract itself. Since the admin contract will only be called from methods
+of the token contract that are not meant to be called by regular users, the code of the admin
+contract does not need to be integrated into wallets or other third party applications.</p>
+<p>is a Token Manager zkApp that is split in 2 parts: low-level and high-level one.</p>
+<h2 id="the-fungibletoken-contract"><a class="header" href="#the-fungibletoken-contract">The <code>FungibleToken</code> contract</a></h2>
+<h2 id="on-chain-state-and-deploy-arguments"><a class="header" href="#on-chain-state-and-deploy-arguments">On-chain State and deploy arguments</a></h2>
+<p>The on-chain state is defined as follows:</p>
+<pre><code class="language-ts">@state(UInt8) decimals = State&lt;UInt8&gt;()
+@state(PublicKey) admin = State&lt;PublicKey&gt;()
+@state(UInt64) private circulating = State&lt;UInt64&gt;()
+@state(Bool) paused = State&lt;Bool&gt;()
+</code></pre>
+<p>The <code>deploy()</code> function takes as arguments</p>
+<ul>
+<li>A string to use as the token symbol</li>
+<li>A string pointing to the source code of the contract -- when following the standard, this should
+point to the source of the standard implementation on github</li>
+</ul>
+<p>Immediately after deploying the contract -- ideally, in the same transaction -- the contract needs
+to be initialized via the <code>initialize()</code> method. Its arguments are</p>
+<ul>
+<li>The public key of the account that the admin contract has been deployed to</li>
+<li>A <code>UInt8</code> for the number of decimals</li>
+<li>A <code>Bool</code> to determine whether the token contract should start in paused mode. whether token
+transfers should be enabled immediately. If set to <code>Bool(true)</code>, the token contract will be in a
+paused state initially, and the <code>resume()</code> method will need to be called before tokens can be
+minted or transferred. This is safer if you have a non-atomic deploy (i.e., if you do not have the
+admin contract deployed in the same transaction as the token contract is itself is deployed and
+initialized).</li>
+</ul>
+<p>This method initializes the state of the contract. Initially, the circulating supply is set to zero,
+as no tokens have been created yet.</p>
+<h2 id="methods"><a class="header" href="#methods">Methods</a></h2>
+<p>The user facing methods of <code>FungibleToken</code> are</p>
+<pre><code class="language-ts">@method.returns(AccountUpdate) async burn(from: PublicKey, amount: UInt64): Promise&lt;AccountUpdate&gt;
+
+@method async transfer(from: PublicKey, to: PublicKey, amount: UInt64)
+@method async approveBase(updates: AccountUpdateForest): Promise&lt;void&gt;
+@method.returns(UInt64) async getBalanceOf(address: PublicKey): Promise&lt;UInt64&gt;
+@method.returns(UInt64) async getCirculating(): Promise&lt;UInt64&gt;
+@method async updateCirculating()
+@method.returns(UInt8) async getDecimals(): Promise&lt;UInt8&gt;
+</code></pre>
+<p>The following methods call the admin account for permission, and are not supposed to be called by
+regular users</p>
+<pre><code class="language-ts">@method async setAdmin(admin: PublicKey)
+@method.returns(AccountUpdate) async mint(recipient: PublicKey, amount: UInt64): Promise&lt;AccountUpdate&gt;
+@method async pause()
+@method async resume()
+</code></pre>
+<h3 id="minting-burning-and-keeping-track-of-the-circulating-supply"><a class="header" href="#minting-burning-and-keeping-track-of-the-circulating-supply">Minting, burning, and keeping track of the circulating supply</a></h3>
+<p>In order to allow multiple minting/burning transactions in a single block, we do not tally the
+circulating supply as part of the contract state. Instead, we use a special account, the balance of
+which always corresponds to the total number of tokens in other accounts. The balance of this
+account is updated in the <code>mint()</code> and <code>burn()</code> methods. Transfers to and from this account are not
+possible. The <code>getCirculating()</code> method reports the balance of the account.</p>
+<p>Note that if you want to require certain limits on the circulation, you should express your
+constraints using <code>requireBetween()</code> rather than <code>requireEquals()</code>. This is more robust against
+minting or burning transactions in the same block invalidating your preconditions.</p>
+<h2 id="events"><a class="header" href="#events">Events</a></h2>
+<p>The following events are emitted from <code>FungibleToken</code> when appropriate:</p>
+<pre><code class="language-ts">events = {
+  SetAdmin: SetAdminEvent,
+  Pause: PauseEvent,
+  Mint: MintEvent,
+  Burn: BurnEvent,
+  BalanceChange: BalanceChangeEvent,
+}
+
+export class SetAdminEvent extends Struct({
+  adminKey: PublicKey,
+}) {}
+
+export class PauseEvent extends Struct({
+  isPaused: Bool,
+}) {}
+
+class MintEvent extends Struct({
+  recipient: PublicKey,
+  amount: UInt64,
+}) {}
+
+class BurnEvent extends Struct({
+  from: PublicKey,
+  amount: UInt64,
+}) {}
+
+export class BalanceChangeEvent extends Struct({
+  address: PublicKey,
+  amount: Int64,
+}) {}
+</code></pre>
+<p>Note that <code>MintEvent</code>, <code>BurnEvent</code>, and <code>BalanceChangeEvent</code> each signal that the balance of an
+account changes. The difference is that <code>MintEvent</code> and <code>BurnEvent</code> are emitted when tokens are
+minted/burned, and <code>BalanceChangeEvent</code> is emitted when a transaction takes tokens from some
+addresses, and sends them to others.</p>
+<p>[!NOTE] Note that <code>MintEvent</code>, <code>BurnEvent</code>, and <code>BalanceChangeEvent</code> events can be emitted with
+<code>amount = 0</code>. If you want to track &quot;true&quot; mints/burns/transfers (for example, to maintain a list of
+depositors), you will need to filter for non-zero values of <code>amount</code>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="deploy.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="deploy.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
